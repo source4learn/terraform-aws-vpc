@@ -1,2 +1,2 @@
-# terraform-aws-vpc
-Hashicorp Terraform AWS VPC Module
+# AWS VPC Module
+Terraform AWS VPC Module

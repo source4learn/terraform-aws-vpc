@@ -22,3 +22,8 @@ variable "cidr" {
   type        = string
   default     = "10.0.0.0/20"
 }
+
+variable "subnet_bits" {
+  description = "Subnet bits for cidrsubnet interpolation or Size we need to define for the Subnet (cidr of VPC + Subnet bits)"
+  type        = string
+}
