@@ -1,0 +1,35 @@
+name: 'CI Build Pipeline for Terraform AWS VPC Module'
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    # Use the Bash shell
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Install the latest version of Terraform CLI
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    # Setup pre-commit hooks for terraform validation.
+    - name: pre-commit
+      uses: pre-commit/action@v2.0.3
+      with:
+        # options to pass to pre-commit run
+        extra_args: flake8 --all-files
+
+    # Checks that all Terraform configuration files adhere to a canonical format
+    - name: Terraform Format
+      run: terraform fmt -check
