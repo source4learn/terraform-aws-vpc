@@ -11,7 +11,7 @@ variable "aws_internet_gateway_id" {
 
 variable "aws_nat_gateway_id" {
   description = "NAT Gateway ids sort by the availability zone names to bind with the subnet mask in respective AZs"
-  type        = list
+  type        = list(any)
   default     = [""]
 }
 
@@ -32,7 +32,7 @@ variable "subnet_bits" {
 
 variable "subnet_type" {
   description = "List of type of subnet Eg: ['public', 'private']"
-  type        = list
+  type        = list(any)
 }
 
 variable "cidr" {

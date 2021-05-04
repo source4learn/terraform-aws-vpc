@@ -29,7 +29,7 @@ resource "aws_route_table" "route_table" {
 
 # AWS Route Table - Subnet Association 
 resource "aws_route_table_association" "subnet_association" {
-  count           = var.create > 0 ? length(data.aws_availability_zones.available_zones.names) : 0
-  subnet_id       = element(aws_subnet.subnets.*.id, count.index)
-  route_table_id  = element(aws_route_table.route_table.*.id, count.index)
+  count          = var.create > 0 ? length(data.aws_availability_zones.available_zones.names) : 0
+  subnet_id      = element(aws_subnet.subnets.*.id, count.index)
+  route_table_id = element(aws_route_table.route_table.*.id, count.index)
 }

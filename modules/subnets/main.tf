@@ -49,8 +49,8 @@ resource "aws_route" "public_route" {
 
 # AWS Route Tables - Private Route
 resource "aws_route" "private_route" {
-  count                   = contains(var.subnet_type, "private") ? length(data.aws_availability_zones.available_zones.names) : 0
-  route_table_id          = module.aws_private_subnet.route_table_ids[count.index]
-  destination_cidr_block  = "0.0.0.0/0"
-  nat_gateway_id          = var.aws_nat_gateway_id[count.index]
+  count                  = contains(var.subnet_type, "private") ? length(data.aws_availability_zones.available_zones.names) : 0
+  route_table_id         = module.aws_private_subnet.route_table_ids[count.index]
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = var.aws_nat_gateway_id[count.index]
 }

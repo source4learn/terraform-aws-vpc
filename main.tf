@@ -8,9 +8,9 @@ resource "aws_vpc" "vpc" {
   cidr_block = var.cidr
 
   tags = {
-        Name        = "${var.prefix}-${var.environment}"
-        Environment = var.environment
-    }
+    Name        = "${var.prefix}-${var.environment}"
+    Environment = var.environment
+  }
 }
 
 # AWS VPC Internet Gateway
@@ -45,20 +45,20 @@ module "nat_gateway" {
 
 # AWS VPC Subnets Module - Private Subnet
 module "private_subnet" {
-  source                  = "./modules/subnets"
-  vpc_id                  = aws_vpc.vpc.id
-  aws_nat_gateway_id      = module.nat_gateway.nat_gateway_ids
-  cidr                    = var.cidr
-  prefix                  = var.prefix
-  environment             = var.environment
-  subnet_bits             = var.subnet_bits
-  subnet_type             = ["private", "storage"]
+  source             = "./modules/subnets"
+  vpc_id             = aws_vpc.vpc.id
+  aws_nat_gateway_id = module.nat_gateway.nat_gateway_ids
+  cidr               = var.cidr
+  prefix             = var.prefix
+  environment        = var.environment
+  subnet_bits        = var.subnet_bits
+  subnet_type        = ["private", "storage"]
 }
 
 # AWS VPC Security Groups Module
 module "security_group" {
-  source        = "./modules/security-groups"
-  vpc_id        = aws_vpc.vpc.id
-  prefix        = var.prefix
-  environment   = var.environment
+  source      = "./modules/security-groups"
+  vpc_id      = aws_vpc.vpc.id
+  prefix      = var.prefix
+  environment = var.environment
 }
