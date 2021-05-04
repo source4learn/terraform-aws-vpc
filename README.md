@@ -25,7 +25,6 @@ resource "aws_vpc" "vpc" {
   }
 }
 
-# AWS VPC Internet Gateway
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 
@@ -35,7 +34,6 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
-# AWS VPC Subnets Module - Public Subnet
 module "public_subnet" {
   source                  = "./modules/subnets"
   vpc_id                  = aws_vpc.vpc.id
