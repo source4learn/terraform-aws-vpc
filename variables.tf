@@ -1,9 +1,4 @@
 # Terraform Variables
-variable "aws_region" {
-  description = "AWS Default Region"
-  type        = string
-}
-
 variable "cluster_prefix" {
   description = "To apply generic naming to AWS VPC Resources"
   type        = string
