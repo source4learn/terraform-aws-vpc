@@ -18,7 +18,7 @@ This AWS VPC Module will create following resources:
 ```terraform
 module "vpc" {
   source              = "opensource4learn/vpc/aws"
-  version             = "0.1.0-alpha"
+  version             = "0.1.0-beta"
   aws_region          = "ap-south-1"
   cluster_prefix      = "source4learn"
   cluster_environment = "production"
