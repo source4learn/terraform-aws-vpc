@@ -9,8 +9,8 @@ resource "aws_subnet" "subnets" {
   availability_zone = data.aws_availability_zones.available_zones.names[count.index]
 
   tags = {
-    Name        = "${var.prefix}-${var.subnet_type}-${count.index + 1}"
-    Environment = var.environment
+    Name        = "${var.cluster_prefix}-${var.subnet_type}-${count.index + 1}"
+    Environment = var.cluster_environment
     Type        = var.subnet_type
   }
 }
@@ -21,8 +21,8 @@ resource "aws_route_table" "route_table" {
   count  = var.create > 0 ? length(data.aws_availability_zones.available_zones.names) : 0
 
   tags = {
-    Name        = "${var.prefix}-${var.subnet_type}-${count.index + 1}"
-    Environment = var.environment
+    Name        = "${var.cluster_prefix}-${var.subnet_type}-${count.index + 1}"
+    Environment = var.cluster_environment
     Type        = var.subnet_type
   }
 }

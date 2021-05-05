@@ -15,13 +15,13 @@ variable "aws_nat_gateway_id" {
   default     = [""]
 }
 
-variable "prefix" {
+variable "cluster_prefix" {
   description = "generic naming resources"
   type        = string
 }
 
-variable "environment" {
-  description = "To apply generic environment to AWS VPC Resources"
+variable "cluster_environment" {
+  description = "To apply generic cluster_environment to AWS VPC Resources"
   type        = string
 }
 

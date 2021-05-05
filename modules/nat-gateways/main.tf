@@ -7,8 +7,8 @@ resource "aws_eip" "eip" {
   count = length(data.aws_availability_zones.available_zones.names)
 
   tags = {
-    Name        = "${var.prefix}-${count.index + 1}"
-    Environment = var.environment
+    Name        = "${var.cluster_prefix}-${count.index + 1}"
+    Environment = var.cluster_environment
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   count         = length(data.aws_availability_zones.available_zones.names)
 
   tags = {
-    Name        = "${var.prefix}-${count.index + 1}"
-    Environment = var.environment
+    Name        = "${var.cluster_prefix}-${count.index + 1}"
+    Environment = var.cluster_environment
   }
 }

@@ -2,8 +2,8 @@
 module "public_security_group" {
   source         = "./resources"
   vpc_id         = var.vpc_id
-  prefix         = var.prefix
-  environment    = var.environment
+  cluster_prefix         = var.cluster_prefix
+  cluster_environment    = var.cluster_environment
   sg_type        = "public"
   sg_description = "Allow connections from internet"
 }
@@ -31,8 +31,8 @@ resource "aws_security_group_rule" "allow_https_inbound_public" {
 module "private_security_group" {
   source         = "./resources"
   vpc_id         = var.vpc_id
-  prefix         = var.prefix
-  environment    = var.environment
+  cluster_prefix         = var.cluster_prefix
+  cluster_environment    = var.cluster_environment
   sg_type        = "private"
   sg_description = "The private security group to allows inbound traffic from public group"
 }
@@ -51,8 +51,8 @@ resource "aws_security_group_rule" "allow_inbound_private" {
 module "storage_security_group" {
   source         = "./resources"
   vpc_id         = var.vpc_id
-  prefix         = var.prefix
-  environment    = var.environment
+  cluster_prefix         = var.cluster_prefix
+  cluster_environment    = var.cluster_environment
   sg_type        = "storage"
   sg_description = "The storage security group to allows inbound traffic from private group"
 }
