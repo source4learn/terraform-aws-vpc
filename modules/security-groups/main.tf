@@ -1,11 +1,11 @@
 # AWS Public Security Group
 module "public_security_group" {
-  source         = "./resources"
-  vpc_id         = var.vpc_id
-  cluster_prefix         = var.cluster_prefix
-  cluster_environment    = var.cluster_environment
-  sg_type        = "public"
-  sg_description = "Allow connections from internet"
+  source              = "./resources"
+  vpc_id              = var.vpc_id
+  cluster_prefix      = var.cluster_prefix
+  cluster_environment = var.cluster_environment
+  sg_type             = "public"
+  sg_description      = "Allow connections from internet"
 }
 
 # AWS Public Security Group Rules
@@ -29,12 +29,12 @@ resource "aws_security_group_rule" "allow_https_inbound_public" {
 
 # AWS Private Security Group
 module "private_security_group" {
-  source         = "./resources"
-  vpc_id         = var.vpc_id
-  cluster_prefix         = var.cluster_prefix
-  cluster_environment    = var.cluster_environment
-  sg_type        = "private"
-  sg_description = "The private security group to allows inbound traffic from public group"
+  source              = "./resources"
+  vpc_id              = var.vpc_id
+  cluster_prefix      = var.cluster_prefix
+  cluster_environment = var.cluster_environment
+  sg_type             = "private"
+  sg_description      = "The private security group to allows inbound traffic from public group"
 }
 
 # AWS Private Security Group Rules
@@ -49,12 +49,12 @@ resource "aws_security_group_rule" "allow_inbound_private" {
 
 # AWS Storage Security Group
 module "storage_security_group" {
-  source         = "./resources"
-  vpc_id         = var.vpc_id
-  cluster_prefix         = var.cluster_prefix
-  cluster_environment    = var.cluster_environment
-  sg_type        = "storage"
-  sg_description = "The storage security group to allows inbound traffic from private group"
+  source              = "./resources"
+  vpc_id              = var.vpc_id
+  cluster_prefix      = var.cluster_prefix
+  cluster_environment = var.cluster_environment
+  sg_type             = "storage"
+  sg_description      = "The storage security group to allows inbound traffic from private group"
 }
 
 # AWS Storage Security Group Rules
