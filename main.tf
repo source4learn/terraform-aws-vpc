@@ -1,4 +1,8 @@
 # AWS VPC
+provider "aws" {
+  region = "ap-south-1"
+}
+
 terraform {
   required_version = ">= 0.12.0"
 }
@@ -33,6 +37,7 @@ module "public_subnet" {
   cluster_prefix          = var.cluster_prefix
   cluster_environment     = var.cluster_environment
   subnet_type             = ["public"]
+  cluster_architecture = var.cluster_architecture
 }
 
 # AWS NAT Gateway Module
@@ -53,12 +58,13 @@ module "private_subnet" {
   cluster_environment = var.cluster_environment
   subnet_bits         = var.subnet_bits
   subnet_type         = ["private", "storage"]
+  cluster_architecture = var.cluster_architecture
 }
 
 # AWS VPC Security Groups Module
 module "security_group" {
-  source              = "./modules/security-groups"
-  vpc_id              = aws_vpc.vpc.id
-  cluster_prefix      = var.cluster_prefix
-  cluster_environment = var.cluster_environment
+  source               = "./modules/security-groups"
+  vpc_id               = aws_vpc.vpc.id
+  cluster_prefix       = var.cluster_prefix
+  cluster_environment  = var.cluster_environment
 }
