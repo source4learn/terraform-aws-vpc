@@ -37,28 +37,28 @@ module "public_subnet" {
   cluster_prefix          = var.cluster_prefix
   cluster_environment     = var.cluster_environment
   subnet_type             = ["public"]
-  cluster_architecture = var.cluster_architecture
+  cluster_architecture    = var.cluster_architecture
 }
 
 # AWS NAT Gateway Module
 module "nat_gateway" {
-  source              = "./modules/nat-gateways"
-  cluster_prefix      = var.cluster_prefix
-  cluster_environment = var.cluster_environment
-  public_subnet_ids   = module.public_subnet.public_subnet_ids
+  source               = "./modules/nat-gateways"
+  cluster_prefix       = var.cluster_prefix
+  cluster_environment  = var.cluster_environment
+  public_subnet_ids    = module.public_subnet.public_subnet_ids
   cluster_architecture = var.cluster_architecture
 }
 
 # AWS VPC Subnets Module - Private Subnet
 module "private_subnet" {
-  source              = "./modules/subnets"
-  vpc_id              = aws_vpc.vpc.id
-  aws_nat_gateway_id  = module.nat_gateway.nat_gateway_ids
-  cidr                = var.cidr
-  cluster_prefix      = var.cluster_prefix
-  cluster_environment = var.cluster_environment
-  subnet_bits         = var.subnet_bits
-  subnet_type         = ["private", "storage"]
+  source               = "./modules/subnets"
+  vpc_id               = aws_vpc.vpc.id
+  aws_nat_gateway_id   = module.nat_gateway.nat_gateway_ids
+  cidr                 = var.cidr
+  cluster_prefix       = var.cluster_prefix
+  cluster_environment  = var.cluster_environment
+  subnet_bits          = var.subnet_bits
+  subnet_type          = ["private", "storage"]
   cluster_architecture = var.cluster_architecture
 }
 
