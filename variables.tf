@@ -14,7 +14,7 @@ variable "cluster_environment" {
 variable "cluster_architecture" {
   description = "To apply generic cluster_environment to AWS VPC Resources"
   type        = string
-  default     = "1-tier"
+  default     = "3-tier"
 }
 
 variable "cidr" {

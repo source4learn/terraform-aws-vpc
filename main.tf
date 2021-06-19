@@ -46,6 +46,7 @@ module "nat_gateway" {
   cluster_prefix      = var.cluster_prefix
   cluster_environment = var.cluster_environment
   public_subnet_ids   = module.public_subnet.public_subnet_ids
+  cluster_architecture = var.cluster_architecture
 }
 
 # AWS VPC Subnets Module - Private Subnet
@@ -67,4 +68,5 @@ module "security_group" {
   vpc_id               = aws_vpc.vpc.id
   cluster_prefix       = var.cluster_prefix
   cluster_environment  = var.cluster_environment
+  cluster_architecture = var.cluster_architecture
 }

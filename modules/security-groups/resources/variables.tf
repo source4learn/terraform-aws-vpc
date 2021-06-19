@@ -13,6 +13,11 @@ variable "cluster_environment" {
   type        = string
 }
 
+variable "cluster_architecture" {
+  description = "To apply generic cluster_environment to AWS VPC Resources"
+  type        = string
+}
+
 variable "sg_type" {
   description = "Security Group type Eg: public, private and storage"
   type        = string
