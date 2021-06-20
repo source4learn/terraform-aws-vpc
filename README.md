@@ -63,7 +63,7 @@ module "vpc" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR block value to define the size of the AWS VPC | `string` | n/a | yes |
+| <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR block value to define the size of the AWS VPC | `string` | "10.0.0.0/20" | yes |
 | <a name="input_cluster_architecture"></a> [cluster\_architecture](#input\_cluster\_architecture) | To apply generic cluster architecture to AWS VPC Resources | `string` | n/a | yes |
 | <a name="input_cluster_environment"></a> [cluster\_environment](#input\_cluster\_environment) | To apply generic environment to AWS VPC Resources | `string` | n/a | yes |
 | <a name="input_cluster_prefix"></a> [cluster\_prefix](#input\_cluster\_prefix) | To apply generic naming to AWS VPC Resources | `string` | n/a | yes |
