@@ -17,6 +17,7 @@ variable "cluster_architecture" {
 variable "cidr" {
   description = "CIDR block value to define the size of the AWS VPC"
   type        = string
+  default     = "10.0.0.0/20"
 }
 
 variable "subnet_bits" {
