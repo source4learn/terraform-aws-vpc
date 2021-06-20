@@ -10,7 +10,7 @@ variable "cluster_environment" {
 }
 
 variable "cluster_architecture" {
-  description = "To apply generic cluster_environment to AWS VPC Resources"
+  description = "To apply generic cluster architecture to AWS VPC Resources"
   type        = string
 }
 

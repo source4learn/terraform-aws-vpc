@@ -1,8 +1,4 @@
 # AWS VPC
-provider "aws" {
-  region = "ap-south-1"
-}
-
 terraform {
   required_version = ">= 0.12.0"
 }

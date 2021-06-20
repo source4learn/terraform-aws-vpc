@@ -21,12 +21,13 @@ provider "aws" {
 }
 
 module "vpc" {
-  source              = "opensource4learn/vpc/aws"
-  version             = "0.1.0-beta"
-  cluster_prefix      = "source4learn"
-  cluster_environment = "production"
-  cidr                = "10.0.0.0/20"
-  subnet_bits         = "4"
+  source                = "opensource4learn/vpc/aws"
+  version               = "0.1.0-beta"
+  cluster_prefix        = "source4learn"
+  cluster_environment   = "development"
+  cluster_architecture  = "3-tier"
+  cidr                  = "10.0.0.0/20"
+  subnet_bits           = "4"
 }
 ```
 
@@ -35,6 +36,12 @@ module "vpc" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.12.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
@@ -56,9 +63,10 @@ module "vpc" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR block value to define the size of the AWS VPC | `string` | `"10.0.0.0/20"` | no |
-| <a name="input_cluster_environment"></a> [cluster_environment](#input\_cluster_environment) | To apply generic cluster_environment to AWS VPC Resources | `string` | n/a | yes |
-| <a name="input_cluster_prefix"></a> [cluster_prefix](#input\_cluster_prefix) | To apply generic naming to AWS VPC Resources | `string` | n/a | yes |
+| <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR block value to define the size of the AWS VPC | `string` | n/a | yes |
+| <a name="input_cluster_architecture"></a> [cluster\_architecture](#input\_cluster\_architecture) | To apply generic cluster architecture to AWS VPC Resources | `string` | n/a | yes |
+| <a name="input_cluster_environment"></a> [cluster\_environment](#input\_cluster\_environment) | To apply generic environment to AWS VPC Resources | `string` | n/a | yes |
+| <a name="input_cluster_prefix"></a> [cluster\_prefix](#input\_cluster\_prefix) | To apply generic naming to AWS VPC Resources | `string` | n/a | yes |
 | <a name="input_subnet_bits"></a> [subnet\_bits](#input\_subnet\_bits) | Subnet bits for cidrsubnet interpolation or Size we need to define for the Subnet (cidr of VPC + Subnet bits) | `string` | n/a | yes |
 
 ## Outputs
