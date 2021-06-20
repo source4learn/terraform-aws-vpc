@@ -19,6 +19,11 @@ variable "cluster_environment" {
   type        = string
 }
 
+variable "cluster_architecture" {
+  description = "To apply generic cluster_architecture to AWS VPC Resources"
+  type        = string
+}
+
 variable "cidr" {
   description = "CIDR block value is the size of the VPC"
   type        = string
@@ -26,6 +31,11 @@ variable "cidr" {
 
 variable "create" {
   description = "Set 1 or 0 based on need to create subnet"
+  type        = string
+}
+
+variable "tier" {
+  description = "tier"
   type        = string
 }
 

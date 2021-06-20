@@ -5,13 +5,19 @@ variable "cluster_prefix" {
 }
 
 variable "cluster_environment" {
-  description = "To apply generic cluster_environment to AWS VPC Resources"
+  description = "To apply generic environment to AWS VPC Resources"
+  type        = string
+}
+
+variable "cluster_architecture" {
+  description = "To apply generic cluster architecture to AWS VPC Resources"
   type        = string
 }
 
 variable "cidr" {
   description = "CIDR block value to define the size of the AWS VPC"
   type        = string
+  default     = "10.0.0.0/20"
 }
 
 variable "subnet_bits" {
