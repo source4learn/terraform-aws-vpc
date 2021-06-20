@@ -9,10 +9,19 @@ resource "aws_security_group" "public_security_group" {
   egress {
     description = "Allow all outbound"
     from_port   = 0
-    to_port     = 65535
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    description = "Allow ssh connection inbound public"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
 
   ingress {
     description = "Allow http inbound public"
@@ -66,7 +75,7 @@ resource "aws_security_group" "private_security_group" {
 
   egress {
     from_port   = 0
-    to_port     = 65535
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -83,7 +92,7 @@ resource "aws_security_group_rule" "allow_inbound_private" {
   count                    = var.cluster_architecture == "2-tier" || var.cluster_architecture == "3-tier" ? 1 : 0
   type                     = "ingress"
   from_port                = 0
-  to_port                  = 65535
+  to_port                  = 0
   protocol                 = "-1"
   source_security_group_id = aws_security_group.public_security_group[0].id
   security_group_id        = aws_security_group.private_security_group[0].id
@@ -99,7 +108,7 @@ resource "aws_security_group" "storage_security_group" {
 
   egress {
     from_port   = 0
-    to_port     = 65535
+    to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -116,7 +125,7 @@ resource "aws_security_group_rule" "allow_inbound_storage" {
   count                    = var.cluster_architecture == "3-tier" ? 1 : 0
   type                     = "ingress"
   from_port                = 0
-  to_port                  = 65535
+  to_port                  = 0
   protocol                 = "-1"
   source_security_group_id = aws_security_group.private_security_group[0].id
   security_group_id        = aws_security_group.storage_security_group[0].id
