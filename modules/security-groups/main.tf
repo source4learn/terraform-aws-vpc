@@ -1,15 +1,4 @@
 # AWS Public Security Group
-# module "public_security_group" {
-#   source              = "./resources"
-#   count               = var.cluster_architecture == "1-tier" || var.cluster_architecture == "2-tier" || var.cluster_architecture == "3-tier" ? 1 : 0
-#   vpc_id              = var.vpc_id
-#   cluster_prefix      = var.cluster_prefix
-#   cluster_environment = var.cluster_environment
-#   sg_type             = "public"
-#   sg_description      = "Allow connections from internet"
-#   cluster_architecture  = var.cluster_architecture
-# }
-
 resource "aws_security_group" "public_security_group" {
   count                  = var.cluster_architecture == "1-tier" || var.cluster_architecture == "2-tier" || var.cluster_architecture == "3-tier" ? 1 : 0
   name                   = "${var.cluster_prefix}-public"
@@ -68,17 +57,6 @@ resource "aws_security_group" "public_security_group" {
 # }
 
 # AWS Private Security Group
-# module "private_security_group" {
-#   source              = "./resources"
-#   count                = var.cluster_architecture == "2-tier" || var.cluster_architecture == "3-tier" ? 1 : 0
-#   vpc_id              = var.vpc_id
-#   cluster_prefix      = var.cluster_prefix
-#   cluster_environment = var.cluster_environment
-#   sg_type             = "private"
-#   sg_description      = "The private security group to allows inbound traffic from public group"
-#   cluster_architecture  = var.cluster_architecture
-# }
-
 resource "aws_security_group" "private_security_group" {
   count                  = var.cluster_architecture == "2-tier" || var.cluster_architecture == "3-tier" ? 1 : 0
   name                   = "${var.cluster_prefix}-private"
@@ -112,17 +90,6 @@ resource "aws_security_group_rule" "allow_inbound_private" {
 }
 
 # AWS Storage Security Group
-# module "storage_security_group" {
-#   source              = "./resources"
-#   count                = var.cluster_architecture == "3-tier" ? 1 : 0
-#   vpc_id              = var.vpc_id
-#   cluster_prefix      = var.cluster_prefix
-#   cluster_environment = var.cluster_environment
-#   sg_type             = "storage"
-#   sg_description      = "The storage security group to allows inbound traffic from private group"
-#   cluster_architecture  = var.cluster_architecture
-# }
-
 resource "aws_security_group" "storage_security_group" {
   count                  = var.cluster_architecture == "3-tier" ? 1 : 0
   name                   = "${var.cluster_prefix}-storage"
