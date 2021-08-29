@@ -1,5 +1,5 @@
 # Hashicorp Terraform AWS VPC Module
-Terraform AWS VPC Module by Source4Learn(Source4Learn is an opensource learning community.)
+Terraform AWS VPC Module by Source4Learn(An Opensource learning community.)
 ![Source4Learn](https://github.com/source4learn/terraform-aws-vpc/blob/main/s4l.png?raw=true)
 
 ## AWS VPC Module
@@ -45,14 +45,15 @@ The AWS infrastructure patterns can be categories as follows:
 Let's take a brief overview of multi-layers or multi-tier architecture. It divides the AWS infrastructure into layers like - Public, Private, and Storage(Isolated database) layers. The reason behind this implementation is to protect and isolate private layers from any unwanted public access. In other words, the Public layer provides a shield to internal layers of architecture.
 
 To split the AWS infrastructure into multiple tiers and availability zones, please refer to below architectural diagram:</br>
+
 ![VPC](https://github.com/source4learn/terraform-aws-vpc/blob/main/vpc.png?raw=true)
 
 AWS allows users to create the multi-tier infrastructure and distribute it across the availability zones of the current region to achieve the high availability of resources.
 
 ## 3-tier architecture
-A three-tier architecture pattern help will help to design a highly secured, modular, scalable, and fault-tolerant infrastructure. In this approach, the application infrastructure will be divided into a public layer, business logic, and storage layer. The resources in the individual layer are being created separately and they can communicate with specific pre-defined routes and security rules.
+A three-tier architecture pattern will help users to design a highly secured, modular, scalable, and fault-tolerant infrastructure. In this approach, the application infrastructure will be divided into a public layer, business logic, and storage layer. The resources in the individual layer are being created separately and they can communicate with specific pre-defined routes and security rules.
 
-Use this approach while implementing a microservices-based application architecture. The internet-facing services like - Frontend servers and bastion instances can be created public layer, app servers can be created in the intermediate application layer, and storage layer can have data services such as databases/caching etc.
+Use this approach while users needs to implement a microservices-based application architecture. The internet-facing services like - Frontend servers and bastion instances can be created public layer, app servers can be created in the intermediate application layer, and storage layer can have data services such as databases/caching etc.
 
 This AWS Terraform module will help you to create an AWS VPC with 3-tier by just passing `cluster_architecture` as `3-tier`. Users also need to define the desired VPC size in form of `cidr` and subnet mask as `subnet_bits`.
 
